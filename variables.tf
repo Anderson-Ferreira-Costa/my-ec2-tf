@@ -27,6 +27,6 @@ variable "architecture" {
   type = string
 }
 variable "key_name" {
-  type = string
+  type    = string
   default = null
 }
