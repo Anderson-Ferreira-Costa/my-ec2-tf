@@ -20,8 +20,8 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   iam_instance_profile   = var.iam_instance_profile
   vpc_security_group_ids = [aws_security_group.this.id]
-  user_data              = file("user-data.sh")
-  subnet_id              = var.subnet_id
+  user_data              = file("${var.user_data}.sh")
+  subnet_id              = data.aws_subnet.private_subnet.id
   key_name               = module.key_pair.key_pair_name
 
   root_block_device {
@@ -35,10 +35,4 @@ resource "aws_instance" "this" {
   tags = {
     Name = var.ec2_name
   }
-}
-
-module "key_pair" {
-  source             = "terraform-aws-modules/key-pair/aws"
-  key_name           = var.key_name
-  create_private_key = true
 }
