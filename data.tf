@@ -1,4 +1,4 @@
-data "aws_subnets" "private_subnets" {
+data "aws_subnets" "subnets" {
   filter {
     name   = "tag:Name"
     values = ["*${var.subnet_scope}*"]
@@ -6,6 +6,6 @@ data "aws_subnets" "private_subnets" {
 }
 
 # Seleciona a primeira subnet da lista retornada
-data "aws_subnet" "private_subnet" {
-  id = element(data.aws_subnets.private_subnets.ids, 0)
+data "aws_subnet" "subnet" {
+  id = element(data.aws_subnets.subnets.ids, 0)
 }

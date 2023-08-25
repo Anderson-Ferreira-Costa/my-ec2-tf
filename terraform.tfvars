@@ -1,19 +1,20 @@
+# Region 
 region       = "us-east-1"
-subnet_scope = "private"
+subnet_scope = "public"
 
 # EC2
-ec2_name             = "teste"
+ec2_name             = "my-ec2"
 instance_type        = "t4g.small"
 architecture         = "arm64"
-iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
+iam_instance_profile = "AmazonSSMManagedInstanceCore"
 volume_size          = 10
-user_data            = "user-data"
+user_data            = "cloud-init.yaml"
 # ami_id               = "ami-0395072cf41250cbf"
 
 
 # Key Pair
 create_private_key = true
-key_name           = "teste"
+key_name           = "my-key2"
 
 # SG
 sg_ingress = {

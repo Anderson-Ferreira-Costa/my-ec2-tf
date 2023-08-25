@@ -20,8 +20,8 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   iam_instance_profile   = var.iam_instance_profile
   vpc_security_group_ids = [aws_security_group.this.id]
-  user_data              = file("${var.user_data}.sh")
-  subnet_id              = data.aws_subnet.private_subnet.id
+  user_data              = file(var.user_data)
+  subnet_id              = data.aws_subnet.subnet.id
   key_name               = module.key_pair.key_pair_name
 
   root_block_device {
@@ -35,4 +35,13 @@ resource "aws_instance" "this" {
   tags = {
     Name = var.ec2_name
   }
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.this.id
+  allocation_id = aws_eip.this.id
+}
+
+resource "aws_eip" "this" {
+  vpc = true
 }

@@ -1,6 +1,6 @@
 resource "aws_security_group" "this" {
   name   = "${var.ec2_name}_sg"
-  vpc_id = data.aws_subnet.private_subnet.vpc_id
+  vpc_id = data.aws_subnet.subnet.vpc_id
 
   dynamic "ingress" {
     for_each = var.sg_ingress
