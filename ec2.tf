@@ -43,5 +43,5 @@ resource "aws_eip_association" "eip_assoc" {
 }
 
 resource "aws_eip" "this" {
-  vpc = true
+  domain = "vpc"
 }

@@ -25,7 +25,7 @@ sg_ingress = {
     cidr_blocks = ["0.0.0.0/0"]
     description = "SSH Access"
   }
- http = {
+  http = {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
