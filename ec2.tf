@@ -38,19 +38,36 @@ resource "aws_instance" "this" {
 }
 
 resource "null_resource" "remote_exec" {
-
   connection {
     type        = "ssh"
     user        = "ec2-user"
     private_key = file("private_key.pem")
     host        = aws_eip.this.public_ip
   }
-
   provisioner "remote-exec" {
     inline = [
       "echo ${aws_eip.this.private_ip} >> /home/ec2-user/private_ips.txt"
     ]
   }
+  depends_on = [ aws_instance.this  ]
+}
+
+resource "null_resource" "file" {
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"##
+    private_key = file("private_key.pem")
+    host        = aws_eip.this.public_ip
+  }
+  provisioner "file" {
+    source      = "private_key.pem"
+    destination = "/home/ec2-user/private_key.pem"
+  }
+  provisioner "file" {
+    content     = "ami used: ${aws_instance.this.ami}"
+    destination = "/home/ec2-user/ami_used.log"
+  }
+  depends_on = [ aws_instance.this  ]
 }
 
 resource "null_resource" "local-exec" {
@@ -59,6 +76,7 @@ resource "null_resource" "local-exec" {
       echo "${replace(module.key_pair.private_key_pem, "\n", "\n")}" > private_key.pem
     EOT
   }
+  depends_on = [ aws_instance.this  ]
 }
 
 resource "aws_eip_association" "eip_assoc" {

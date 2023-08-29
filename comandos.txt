@@ -1,0 +1,1 @@
+ssh ec2-user@3.218.133.9 -i private_key.pem
