@@ -15,6 +15,6 @@ resource "aws_secretsmanager_secret_version" "this" {
 }
 
 resource "random_string" "suffix" {
-  length   = 4
-  special  = false
+  length  = 4
+  special = false
 }
