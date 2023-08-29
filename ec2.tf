@@ -45,11 +45,11 @@ resource "null_resource" "local-exec" {
   }
 }
 
-resource "aws_eip_association" "eip_assoc" {
-  instance_id   = aws_instance.this.id
-  allocation_id = aws_eip.this.id
-}
+# resource "aws_eip_association" "eip_assoc" {
+#   instance_id   = aws_instance.this.id
+#   allocation_id = aws_eip.this.id
+# }
 
-resource "aws_eip" "this" {
-  domain = "vpc"
-}
+# resource "aws_eip" "this" {
+#   domain = "vpc"
+# }
