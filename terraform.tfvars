@@ -14,7 +14,7 @@ user_data            = "cloud-init.yaml"
 
 # Key Pair
 create_private_key = true
-key_name           = "my-key2"
+key_name           = "my-key"
 
 # SG
 sg_ingress = {
