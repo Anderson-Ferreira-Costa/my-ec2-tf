@@ -5,7 +5,7 @@ data "aws_subnets" "subnets" {
   }
 }
 
-# Seleciona a primeira subnet da lista retornada
+# Seleciona a primeira subnet da lista
 data "aws_subnet" "subnet" {
   id = element(data.aws_subnets.subnets.ids, 0)
 }
