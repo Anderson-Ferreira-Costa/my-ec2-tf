@@ -37,22 +37,6 @@ resource "aws_instance" "this" {
   }
 }
 
-resource "null_resource" "remote_exec" {
-
-  connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    private_key = file("private_key.pem")
-    host        = aws_eip.this.public_ip
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "echo ${aws_eip.this.private_ip} >> /home/ec2-user/private_ips.txt"
-    ]
-  }
-}
-
 resource "null_resource" "local-exec" {
   provisioner "local-exec" {
     command = <<-EOT
