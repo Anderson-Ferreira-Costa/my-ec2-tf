@@ -20,7 +20,7 @@ resource "aws_instance" "this" {
   instance_type          = var.instance_type
   iam_instance_profile   = var.iam_instance_profile
   vpc_security_group_ids = [aws_security_group.this.id]
-  user_data              = file(var.user_data)
+  user_data              = file("./user-datas/${var.user_data}")
   subnet_id              = data.aws_subnet.subnet.id
   key_name               = module.key_pair.key_pair_name
 
