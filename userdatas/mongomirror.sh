@@ -11,4 +11,6 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" > /etc/yum.repos.d/mongodb-org-7.0.repo
 
-yum -y install mongodb-org-tools
+sudo yum -y install mongodb-org-tools
+
+sudo yum -y install telnet

@@ -1,15 +1,18 @@
+module "ec2" {
+  source = "./module"
+
 # Region 
-region       = "us-east-1"
-subnet_scope = "private"
+region       = "ca-central-1"
+subnet_scope = "SINAPSE-EKS-PRD-DR-private-ca-central-1a"
 
 # EC2
-ec2_name             = "my-ec2"
-instance_type        = "t4g.small"
-architecture         = "arm64"
-iam_instance_profile = "AmazonSSMManagedInstanceCore"
-volume_size          = 10
-user_data            = "cloud-init.yaml"
-# ami_id               = "ami-0395072cf41250cbf"
+ec2_name             = "mongomirror"
+instance_type        = "t3a.xlarge"
+architecture         = "x86_64"
+iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
+volume_size          = 500
+user_data            = "mongomirror.sh"
+ami_id               = "ami-08b4f41bc0ef01469"
 
 
 # Key Pair
@@ -32,4 +35,5 @@ sg_ingress = {
   #   cidr_blocks = ["0.0.0.0/0"]
   #   description = "HTTP Access"
   # }
+}
 }
