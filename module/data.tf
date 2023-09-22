@@ -14,7 +14,7 @@ data "aws_ami" "am2" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["amzn2-ami-kernel-5.10-hvm-2.0.*"]
+    values = ["PSG-IAAS-LINUX-AMZN2*"]
   }
   filter {
     name   = "architecture"
@@ -24,5 +24,5 @@ data "aws_ami" "am2" {
     name   = "virtualization-type"
     values = ["hvm"]
   }
-  owners = ["137112412989"]
+  owners = ["722846928525"]
 }

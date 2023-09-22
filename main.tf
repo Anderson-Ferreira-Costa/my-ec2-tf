@@ -1,18 +1,22 @@
+# Region 
+locals {
+  region = "us-east-1"
+}
+
 module "ec2" {
   source = "./module"
 
-# Region 
-region       = "ca-central-1"
-subnet_scope = "SINAPSE-EKS-PRD-DR-private-ca-central-1a"
+# Subnet 
+region       = local.region
+subnet_scope = "Private-2"
 
 # EC2
 ec2_name             = "mongomirror"
-instance_type        = "t3a.xlarge"
+instance_type        = "t3a.medium"
 architecture         = "x86_64"
 iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
 volume_size          = 500
 user_data            = "mongomirror.sh"
-ami_id               = "ami-08b4f41bc0ef01469"
 
 
 # Key Pair
