@@ -4,7 +4,7 @@ tar xvzf mongomirror*
 sudo mv mongomirror*/bin/mongomirror /usr/bin
 rm mongomirror* -rf
 
-echo "[mongodb-org-7.0]
+sudo echo "[mongodb-org-7.0]
 name=MongoDB Repository
 baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/7.0/x86_64/
 gpgcheck=1

@@ -11,13 +11,12 @@ region       = local.region
 subnet_scope = "Private-2"
 
 # EC2
-ec2_name             = "mongomirror"
+ec2_name             = "mongo-tools"
 instance_type        = "t3a.medium"
 architecture         = "x86_64"
 iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
 volume_size          = 500
-user_data            = "mongomirror.sh"
-
+user_data            = "mongo.sh"
 
 # Key Pair
 create_private_key = true
