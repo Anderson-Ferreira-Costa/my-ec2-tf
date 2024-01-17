@@ -12,10 +12,10 @@ subnet_scope = "Private-2"
 
 # EC2
 ec2_name             = "mongo-tools"
-instance_type        = "t3a.medium"
+instance_type        = "t3a.2xlarge"
 architecture         = "x86_64"
 iam_instance_profile = "AmazonSSMRoleForInstancesQuickSetup"
-volume_size          = 500
+volume_size          = 2000
 user_data            = "mongo.sh"
 
 # Key Pair
