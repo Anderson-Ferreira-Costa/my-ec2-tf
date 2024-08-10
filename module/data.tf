@@ -14,7 +14,7 @@ data "aws_ami" "am2" {
   most_recent = true
   filter {
     name   = "name"
-    values = ["PSG-IAAS-LINUX-AMZN2*"]
+    values = ["PSG-IAAS-WINDOWS*"]
   }
   filter {
     name   = "architecture"

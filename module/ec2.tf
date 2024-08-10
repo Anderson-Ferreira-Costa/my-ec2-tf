@@ -9,7 +9,7 @@ resource "aws_instance" "this" {
 
   root_block_device {
     volume_type = "gp3"
-    throughput  = "500"
+    throughput  = "125"
     iops        = "3000"
     volume_size = var.volume_size
   }
@@ -17,7 +17,7 @@ resource "aws_instance" "this" {
   metadata_options {
     http_tokens = "required"
   }
-  
+
   tags = {
     Name = var.ec2_name
   }
